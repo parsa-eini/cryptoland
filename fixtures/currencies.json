@@ -1,0 +1,10 @@
+[
+  {
+    "model": "currencies.cryptocurrency",
+    "pk": 1,
+    "fields": {
+      "name": "ABAN",
+      "price": "4.00"
+    }
+  }
+]

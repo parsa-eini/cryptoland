@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "08991747-ed8f-435e-b36d-3810ff1bb7dd",
+		"name": "cryptoland",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11151928"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "pay",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNTMyNTY2LCJpYXQiOjE3MTM0NDYxNjYsImp0aSI6IjQ0ZTdhMWQ2OTFmZDQ3M2RiN2IxZjk3ZmI2YjhhM2FlIiwidXNlcl9pZCI6MX0.dOmueN5zpMipuQbo6SVJjfmPPfPrC4Nux-qQ3oaRSZY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"currency\": \"ABAN\",\n    \"count\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/orderpay/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orderpay",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

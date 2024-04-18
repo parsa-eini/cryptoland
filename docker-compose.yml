@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py loaddata /code/fixtures/*.json && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+      - celery
+      - celerybeat
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=cryptoland
+      - POSTGRES_USER=cryptoland
+      - POSTGRES_PASSWORD=cryptoland
+    ports:
+      - "5433:5432"
+
+
+  redis:
+    image: redis
+
+  celery:
+    build: .
+    command: celery -A cryptoland worker --loglevel=info
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+
+  celerybeat:
+    build: .
+    command: celery -A cryptoland beat --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
